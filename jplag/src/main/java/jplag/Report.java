@@ -107,11 +107,7 @@ public class Report implements TokenConstants {
 		file.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		file.println("<HTML>\n<HEAD>\n <TITLE>" + title + "</TITLE>");
 		file.println("<META http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-		file.println("  <script type=\"text/javascript\">\n  <!--");
-		file.println("   function ZweiFrames(URL1,F1,URL2,F2)\n   {");
-		file.println("    parent.frames[F1].location.href=URL1;");
-		file.println("    parent.frames[F2].location.href=URL2;\n   }\n  //-->");
-		file.println("  </script>\n</HEAD>");
+		file.println("\n</HEAD>");
 	}
 
 	//  INDEX
@@ -707,8 +703,7 @@ public class Report implements TokenConstants {
 			for (int y = 0; y < files.length; y++) {
 				if (start.file.equals(files[y]) && text[y] != null) {
 					hilf = "<FONT color=\"" + Colors.getColor(x) + "\">" + (j == 1 ? "<div style=\"position:absolute;left:0\">" : "")
-							+ "<A HREF=\"javascript:ZweiFrames('match" + i + "-" + (1 - j) + ".html#" + x + "'," + (3 - j) + ",'match" + i
-							+ "-top.html#" + x + "',1)\"><IMG SRC=\"" + pics[j] + "\" ALT=\"other\" " + "BORDER=\"0\" ALIGN=\""
+                                          + "<A HREF='match"+i+"-"+(1-j)+".html#"+x+"' target='"+(1-j)+"' onclick='scroll(0,0)'><IMG SRC=\"" + pics[j] + "\" ALT=\"other\" " + "BORDER=\"0\" ALIGN=\""
 							+ (j == 0 ? "right" : "left") + "\"></A>" + (j == 1 ? "</div>" : "") + "<B>";
 					// position the icon and the beginning of the colorblock
 					if (text[y][start.getLine() - 1].endsWith("</FONT>"))
@@ -885,8 +880,7 @@ public class Report implements TokenConstants {
 			for (int fileIndex = 0; fileIndex < files.length; fileIndex++) {
 				if (start.file.equals(files[fileIndex]) && text[fileIndex] != null) {
 					String tmp = "<FONT color=\"" + Colors.getColor(x) + "\">" + (j == 1 ? "<div style=\"position:absolute;left:0\">" : "")
-							+ "<A HREF=\"javascript:ZweiFrames('match" + i + "-" + (1 - j) + ".html#" + x + "'," + (3 - j) + ",'match" + i
-							+ "-top.html#" + x + "',1)\"><IMG SRC=\"" + pics[j] + "\" ALT=\"other\" " + "BORDER=\"0\" ALIGN=\""
+							+ "<A HREF='match"+i+"-"+(1-j)+".html#"+x+"' target='"+(1-j)+"' onclick='scroll(0,0)'><IMG SRC=\"" + pics[j] + "\" ALT=\"other\" " + "BORDER=\"0\" ALIGN=\""
 							+ (j == 0 ? "right" : "left") + "\"></A>" + (j == 1 ? "</div>" : "") + "<B>";
 					// position the icon and the beginning of the colorblock
 					markupList.put(new MarkupText(fileIndex, start.getLine() - 1, start.getColumn() - 1, tmp, true), null);

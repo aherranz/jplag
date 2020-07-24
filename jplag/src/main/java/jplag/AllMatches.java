@@ -225,17 +225,13 @@ o2:   for (i=1; i<size(); i++) {
       Token endeB = B[match.startB+match.length-1];
       String col = Colors.getColor(i);
       f.print("<TR><TD BGCOLOR=\""+col+"\"><FONT COLOR=\""+col+"\">-</FONT>");
-      f.print("<TD><A HREF=\"javascript:ZweiFrames('match"+
-	      matchnr+"-0.html#"+i+"',2,'match"+
-	      matchnr+"-1.html#"+i+"',3)\" NAME=\""+i+"\">");
+      f.print("<TD><A HREF='match"+matchnr+"-0.html#"+i+"' target='0' onclick='scroll(0,0)'>");
       f.print(new String(startA.file.getBytes()));
       if (program.get_language().usesIndex())
     	  f.print("("+startA.getIndex()+"-"+endeA.getIndex()+")");
       else
     	  f.print("("+startA.getLine()+"-"+endeA.getLine()+")");
-      f.print("<TD><A HREF=\"javascript:ZweiFrames('match"+
-	      matchnr+"-0.html#"+i+"',2,'match"+
-	      matchnr+"-1.html#"+i+"',3)\" NAME=\""+i+"\">");
+      f.print("<TD><A HREF='match"+matchnr+"-1.html#"+i+"' target='1' onclick='scroll(0,0)'>");
       f.print(startB.file);
       if (program.get_language().usesIndex())
     	  f.print("("+startB.getIndex()+"-"+endeB.getIndex());

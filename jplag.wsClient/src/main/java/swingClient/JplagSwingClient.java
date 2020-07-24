@@ -809,47 +809,6 @@ public class JplagSwingClient extends JFrame {
 							HTMLFrameHyperlinkEvent evt = (HTMLFrameHyperlinkEvent) e;
 							HTMLDocument doc = (HTMLDocument) pane.getDocument();
 							String url = e.getDescription();
-							if (url.startsWith("javascript:ZweiFrames")) {
-								String params[] = url.split("\\('|',|,'|\\)");
-								for (int i = 0; i < params.length; i++)
-									System.out.println(params[i]);
-								try {
-									HTMLFrameHyperlinkEvent evt1 = new HTMLFrameHyperlinkEvent(e.getSource(),
-											HyperlinkEvent.EventType.ACTIVATED, new java.net.URL(new File(getJResultDir().getText()
-													+ File.separator + "jplagResult" + File.separator).toURI().toString()
-													+ params[1]),
-											//													new java.net.URL("file:\\\\\\" +
-											//													getJResultDir().getText()+"\\jplagResult\\"+params[1]),
-											getFrameName(params[2]));
-
-									/*
-									 * System.out.println(new java.net.URL( new
-									 * File(getJResultDir().getText()+
-									 * File.separator+"jplagResult"+
-									 * File.separator)
-									 * .toURI().toString()+params[1]));
-									 * 
-									 * System.out.println(new
-									 * java.net.URL("file:\\\\\\" +
-									 * getJResultDir
-									 * ().getText()+"\\jplagResult\\"
-									 * +params[1]));
-									 */
-
-									doc.processHTMLFrameHyperlinkEvent(evt1);
-									HTMLFrameHyperlinkEvent evt2 = new HTMLFrameHyperlinkEvent(e.getSource(),
-											HyperlinkEvent.EventType.ACTIVATED, new java.net.URL(new File(getJResultDir().getText()
-													+ File.separator + "jplagResult" + File.separator).toURI().toString()
-													+ params[3]),
-											//										new java.net.URL("file:\\\\\\" +
-											//												getJResultDir().getText()+"\\jplagResult\\"+params[3]),
-											getFrameName(params[4]));
-									doc.processHTMLFrameHyperlinkEvent(evt2);
-									return;
-								} catch (java.net.MalformedURLException ex) {
-									ex.printStackTrace();
-								}
-							}
 							doc.processHTMLFrameHyperlinkEvent(evt);
 						} else {
 							try {
